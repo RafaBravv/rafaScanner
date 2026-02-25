@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { WelcomeHero } from '../molecules/welcomeHero';
 import { AppButton } from '../atoms/appButton';
-import { AppText } from '../atoms/appText';
 import { useCameraPermission } from '../../hooks/useCameraPermission';
-import { Colors } from '../../constants/colores';
 import { Spacing } from '../../constants/sizes';
+import { homeOrganismStyles } from '../../constants/styles';
 
 export const HomeOrganism: React.FC = () => {
   const { isLoading, requestPermission } = useCameraPermission();
@@ -16,55 +15,32 @@ export const HomeOrganism: React.FC = () => {
   const handleOpenCamera = async () => {
     const granted = await requestPermission();
     if (granted) {
-      router.push('./camera');
+      router.push('./camara');
     }
   };
 
   return (
     <View
       style={[
-        styles.container,
+        homeOrganismStyles.container,
         {
           paddingTop: insets.top + Spacing.xl,
           paddingBottom: insets.bottom + Spacing.xl,
         },
       ]}
     >
-      <View style={styles.hero}>
+      <View style={homeOrganismStyles.hero}>
         <WelcomeHero />
       </View>
 
-      <View style={styles.footer}>
+      <View style={homeOrganismStyles.footer}>
         <AppButton
           label="Abrir escáner"
           onPress={handleOpenCamera}
           loading={isLoading}
           size="md"
         />
-        <AppText variant="caption" color="secondary" style={styles.hint}>
-          Se solicitará acceso a la cámara
-        </AppText>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-    paddingHorizontal: Spacing.xl,
-    justifyContent: 'space-between',
-  },
-  hero: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  footer: {
-    alignItems: 'center',
-    gap: Spacing.md,
-  },
-  hint: {
-    textAlign: 'center',
-  },
-});

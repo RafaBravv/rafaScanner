@@ -3,8 +3,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../constants/colores';
 import { IconSize } from '../../constants/sizes';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 type IoniconName = React.ComponentProps<typeof Ionicons>['name'];
 
 export interface AppIconProps {
@@ -13,8 +11,6 @@ export interface AppIconProps {
   /** Acepta string directo o clave del sistema de colores */
   color?: string;
 }
-
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export const AppIcon: React.FC<AppIconProps> = ({
   name,
