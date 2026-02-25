@@ -1,11 +1,11 @@
 import { View, StyleSheet } from 'react-native';
-import { HomeOrganism } from '../components/organisms/homeOrganism';
+import { CameraOrganism } from '../components/organisms/camaraOrganism';
 import { Colors } from '../constants/colores';
 
-export default function HomeScreen() {
+export default function CameraScreen() {
   return (
     <View style={styles.container}>
-      <HomeOrganism />
+      <CameraOrganism />
     </View>
   );
 }
